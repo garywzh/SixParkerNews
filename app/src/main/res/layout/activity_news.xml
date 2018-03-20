@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.garywzh.sixparkernews.ui.NewsActivity">
+
+    <TextView
+        android:id="@+id/newsTitle"
+        tools:text="政府工作报告极简版来了 只有800字(图)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/source"
+            tools:text="人民日报"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/date"
+            tools:text="2018-03-04 23:24:55"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/newsContent"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula quis enim eu maximus. Vestibulum quis varius leo. Praesent pulvinar neque eu tortor mattis dignissim. Sed elementum libero sit amet dapibus rutrum. Mauris sit amet luctus felis. Nam est felis, euismod sit amet augue ac, pellentesque pulvinar diam. Suspendisse rutrum nulla ac nunc tempus malesuada. Mauris et lectus sit amet augue auctor pretium. Nulla elementum tempus purus et facilisis. Morbi placerat diam lacinia efficitur vulputate. Morbi eu vulputate erat, non efficitur lacus. Curabitur efficitur posuere libero vitae vestibulum. Fusce justo purus, convallis ut accumsan non, porta at orci. Sed imperdiet leo elit, at cursus turpis tincidunt ac. Mauris blandit volutpat nisi, vel commodo erat finibus ac. Quisque sed ex suscipit, egestas nisi eu, iaculis enim."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/editor"
+        tools:text="留园"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/flower"
+            tools:text="3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/passing"
+            tools:text="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/egg"
+            tools:text="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</LinearLayout>
