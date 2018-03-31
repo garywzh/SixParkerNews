@@ -1,85 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.garywzh.sixparkernews.ui.NewsActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="8dp"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp"
-        android:paddingTop="8dp">
-
-        <TextView
-            android:id="@+id/newsTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            tools:text="政府工作报告极简版来了 只有800字(图)" />
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp">
+            android:orientation="vertical"
+            android:paddingBottom="8dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp">
 
             <TextView
-                android:id="@+id/source"
-                android:layout_width="wrap_content"
+                android:id="@+id/newsTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="人民日报" />
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:text="政府工作报告极简版来了 只有800字(图)" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="人民日报" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    tools:text="2018-03-04 23:24:55" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/newsContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="15sp"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula quis enim eu maximus. Vestibulum quis varius leo. Praesent pulvinar neque eu tortor mattis dignissim. Sed elementum libero sit amet dapibus rutrum. Mauris sit amet luctus felis. Nam est felis, euismod sit amet augue ac, pellentesque pulvinar diam. Suspendisse rutrum nulla ac nunc tempus malesuada. Mauris et lectus sit amet augue auctor pretium. Nulla elementum tempus purus et facilisis. Morbi placerat diam lacinia efficitur vulputate. Morbi eu vulputate erat, non efficitur lacus. Curabitur efficitur posuere libero vitae vestibulum. Fusce justo purus, convallis ut accumsan non, porta at orci. Sed imperdiet leo elit, at cursus turpis tincidunt ac. Mauris blandit volutpat nisi, vel commodo erat finibus ac. Quisque sed ex suscipit, egestas nisi eu, iaculis enim." />
+
+            <TextView
+                android:id="@+id/editor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                tools:text="2018-03-04 23:24:55" />
+                android:layout_marginTop="16dp"
+                tools:text="留园" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/flower"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="3" />
+
+                <TextView
+                    android:id="@+id/passing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    tools:text="1" />
+
+                <TextView
+                    android:id="@+id/egg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    tools:text="5" />
+            </LinearLayout>
         </LinearLayout>
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/newsContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textSize="15sp"
-            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula quis enim eu maximus. Vestibulum quis varius leo. Praesent pulvinar neque eu tortor mattis dignissim. Sed elementum libero sit amet dapibus rutrum. Mauris sit amet luctus felis. Nam est felis, euismod sit amet augue ac, pellentesque pulvinar diam. Suspendisse rutrum nulla ac nunc tempus malesuada. Mauris et lectus sit amet augue auctor pretium. Nulla elementum tempus purus et facilisis. Morbi placerat diam lacinia efficitur vulputate. Morbi eu vulputate erat, non efficitur lacus. Curabitur efficitur posuere libero vitae vestibulum. Fusce justo purus, convallis ut accumsan non, porta at orci. Sed imperdiet leo elit, at cursus turpis tincidunt ac. Mauris blandit volutpat nisi, vel commodo erat finibus ac. Quisque sed ex suscipit, egestas nisi eu, iaculis enim." />
+    <com.github.piasy.biv.view.BigImageView
+        android:id="@+id/bigImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:visibility="gone"
+        app:failureImage="@drawable/ic_launcher_foreground"
+        app:failureImageInitScaleType="center"
+        app:optimizeDisplay="true" />
 
-        <TextView
-            android:id="@+id/editor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            tools:text="留园" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp">
-
-            <TextView
-                android:id="@+id/flower"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="3" />
-
-            <TextView
-                android:id="@+id/passing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                tools:text="1" />
-
-            <TextView
-                android:id="@+id/egg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                tools:text="5" />
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+</FrameLayout>

@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager
 import com.garywzh.sixparkernews.R
 import com.garywzh.sixparkernews.model.News
 import com.garywzh.sixparkernews.network.NetworkObj
+import com.github.piasy.biv.BigImageViewer
+import com.github.piasy.biv.loader.glide.GlideImageLoader
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.startActivity
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        BigImageViewer.initialize(GlideImageLoader.with(applicationContext))
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
