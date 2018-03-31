@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.news_list_item.*
 /**
  * Created by garywzh on 2018/3/4.
  */
-class NewsLIstAdapter(val listener:View.OnClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsLIstAdapter(private val listener: (v: View?) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var data: List<News>? = null
 

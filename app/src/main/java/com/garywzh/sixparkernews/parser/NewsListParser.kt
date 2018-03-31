@@ -26,28 +26,27 @@ object NewsListParser {
         return result
     }
 
-    private fun parseLiForNews(li: Element): News? {
+    private fun parseLiForNews(li: Element): News? = try {
         val elements = li.select("a")
 
-        return try {
-            val id = parseId(elements[0])
-            val title = parseTitle(elements[0])
+        val id = parseId(elements[0])
+        val title = parseTitle(elements[0])
 
-            val count = if (elements.size > 1) {
-                parseCount(elements[1])
-            } else {
-                0
-            }
-
-            val source = parseSource(li)
-            Log.d("parseNews", source)
-
-            News(id, title, source, "", count)
-
-        } catch (e: NumberFormatException) {
-            Log.d("parseNews", "skip ad " + e.message)
-            null
+        val count = if (elements.size > 1) {
+            parseCount(elements[1])
+        } else {
+            0
         }
+
+        val mdyDate = li.select("i")[0].text().split("/")
+        val date = "20${mdyDate[2]}-${mdyDate[0]}-${mdyDate[1]}"
+
+        val source = parseSource(li)
+
+        News(id, title, source, date, count)
+    } catch (e: NumberFormatException) {
+        Log.d("parseNews", "skip ad " + e.message)
+        null
     }
 
     private fun parseId(a: Element): Int = a.attr("href").substringAfterLast("nid=").toInt()
@@ -55,7 +54,6 @@ object NewsListParser {
     private fun parseTitle(a: Element): String = a.ownText()
 
     private fun parseSource(li: Element): String {
-        Log.d("parseNews", li.ownText())
         return Regex(".+?(?=\\()").find(li.ownText())?.value.orEmpty().replace(" ", "").replace("-", "")
     }
 

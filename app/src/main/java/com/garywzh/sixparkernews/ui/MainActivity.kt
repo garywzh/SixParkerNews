@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.view.View
 import com.garywzh.sixparkernews.R
 import com.garywzh.sixparkernews.model.News
 import com.garywzh.sixparkernews.network.NetworkObj
@@ -13,8 +12,7 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.uiThread
 
-class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
-
+class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var adapter: NewsLIstAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,10 +23,14 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener, 
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        recyclerView.adapter = NewsLIstAdapter(this)
+        adapter = NewsLIstAdapter {
+            val news = it?.tag as News
+            startActivity<NewsActivity>("news" to news)
+        }
+
+        recyclerView.adapter = adapter
 
         swipeRefreshLayout.setOnRefreshListener(this)
-
         swipeRefreshLayout.isRefreshing = true
 
         loadData()
@@ -50,10 +52,5 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener, 
                 swipeRefreshLayout.isRefreshing = false
             }
         }
-    }
-
-    override fun onClick(v: View?) {
-        val news = v?.tag as News
-        startActivity<NewsActivity>("news" to news)
     }
 }

@@ -49,12 +49,12 @@ object NetworkObj {
 
         val response = client.newCall(request).execute()
 
-        var fullNews:FullNews? = null
+        var fullNews: FullNews? = null
 
         response.body()?.let {
             val html = it.string()
             val doc = Parser.toDoc(html)
-            fullNews = FullNewsParser.parseDocForFullNews(doc)
+            fullNews = FullNewsParser.parseDocForFullNews(id, doc)
         }
 
         return fullNews

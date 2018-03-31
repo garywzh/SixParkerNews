@@ -1,5 +1,7 @@
 package com.garywzh.sixparkernews.model
 
+import android.text.Spanned
+
 /**
  * Created by garywzh on 2018/3/5.
  */
