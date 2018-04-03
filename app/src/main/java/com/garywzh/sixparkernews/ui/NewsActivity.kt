@@ -8,6 +8,7 @@ import android.text.Spannable
 import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import com.garywzh.sixparkernews.GlideImageGetter
 import com.garywzh.sixparkernews.R
 import com.garywzh.sixparkernews.model.FullNews
@@ -62,6 +63,31 @@ class NewsActivity : AppCompatActivity() {
 
             newsContent.text = content
             newsContent.movementMethod = LinkMovementMethod.getInstance()
+
+            initHotComments()
+        }
+    }
+
+    private fun initHotComments() {
+        fullNews?.popularComments?.let {
+            for (comment in it) {
+                val view = layoutInflater.inflate(R.layout.comment_list_item, null)
+
+                view.findViewById<TextView>(R.id.author).text = comment.author
+                view.findViewById<TextView>(R.id.commentDate).text = comment.date
+
+                if (comment.toFloor != 0) {
+                    val to = view.findViewById<TextView>(R.id.toFloor)
+                    to.text = "回复${comment.toFloor}楼"
+                    to.visibility = View.VISIBLE
+                }
+
+                view.findViewById<TextView>(R.id.content).text = comment.content
+                view.findViewById<TextView>(R.id.thumbUp).text = "赞 ${comment.thumbUp}"
+
+                container.addView(view)
+            }
+            container.visibility = View.VISIBLE
         }
     }
 
