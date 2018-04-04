@@ -50,10 +50,9 @@ class NewsActivity : AppCompatActivity() {
     private fun initFullNews() {
         fullNews?.let {
             date.text = it.date
-            editor.text = it.editor
-            flower.text = it.flower.toString()
-            passing.text = it.passing.toString()
-            egg.text = it.egg.toString()
+            editor.text = "网编: ${it.editor}"
+            flower.text = "${it.flower} 顶"
+            egg.text = "${it.egg} 踩"
 
             val content = Html.fromHtml(it.content, GlideImageGetter(newsContent), null) as Spannable
             content.onImageClick {
@@ -83,7 +82,7 @@ class NewsActivity : AppCompatActivity() {
                 }
 
                 view.findViewById<TextView>(R.id.content).text = comment.content
-                view.findViewById<TextView>(R.id.thumbUp).text = "赞 ${comment.thumbUp}"
+                view.findViewById<TextView>(R.id.thumbUp).text = "${comment.thumbUp} 赞"
 
                 container.addView(view)
             }
