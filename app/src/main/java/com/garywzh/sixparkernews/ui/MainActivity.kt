@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
 
             uiThread {
                 list?.let {
-                    adapter.setData(it)
+                    adapter.data = it
                     adapter.notifyDataSetChanged()
                 }
                 swipeRefreshLayout.isRefreshing = false

@@ -32,11 +32,7 @@ object NewsListParser {
         val id = parseId(elements[0])
         val title = parseTitle(elements[0])
 
-        val count = if (elements.size > 1) {
-            parseCount(elements[1])
-        } else {
-            0
-        }
+        val count = if (elements.size > 1) parseCount(elements[1]) else 0
 
         val mdyDate = li.select("i")[0].text().split("/")
         val date = "20${mdyDate[2]}-${mdyDate[0]}-${mdyDate[1]}"
@@ -53,9 +49,8 @@ object NewsListParser {
 
     private fun parseTitle(a: Element): String = a.ownText()
 
-    private fun parseSource(li: Element): String {
-        return Regex(".+?(?=\\()").find(li.ownText())?.value.orEmpty().replace(" ", "").replace("-", "")
-    }
+    private fun parseSource(li: Element): String =
+            Regex(".+?(?=\\()").find(li.ownText())?.value.orEmpty().replace(" ", "").replace("-", "")
 
     private fun parseCount(a: Element): Int = a.text().toInt()
 }

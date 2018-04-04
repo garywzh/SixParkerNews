@@ -14,11 +14,7 @@ import kotlinx.android.synthetic.main.news_list_item.*
  */
 class NewsLIstAdapter(private val listener: (v: View?) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var data: List<News>? = null
-
-    fun setData(data: List<News>) {
-        this.data = data
-    }
+    var data: List<News>? = null
 
     override fun getItemCount(): Int = data?.size ?: 0
 
