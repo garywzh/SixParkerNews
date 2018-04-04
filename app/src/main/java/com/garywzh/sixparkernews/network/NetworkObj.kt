@@ -1,8 +1,10 @@
 package com.garywzh.sixparkernews.network
 
 import android.util.Log
+import com.garywzh.sixparkernews.model.Comment
 import com.garywzh.sixparkernews.model.FullNews
 import com.garywzh.sixparkernews.model.News
+import com.garywzh.sixparkernews.parser.CommentListParser
 import com.garywzh.sixparkernews.parser.FullNewsParser
 import com.garywzh.sixparkernews.parser.NewsListParser
 import com.garywzh.sixparkernews.parser.Parser
@@ -18,6 +20,7 @@ import java.util.concurrent.TimeUnit
 object NetworkObj {
     private const val NEWS_LIST: String = "http://news.6parker.com/newspark/index.php?type=1"
     private const val NEWS_DETAIL_PREFIX: String = "http://news.toutiaoabc.com/newspark/view.php?app=news&act=view&nid="
+    private const val COMMENT_LIST_PREFIX: String = "https://news.toutiaoabc.com/newspark/index.php?act=newsreply&nid="
 
     private val interceptor = HttpLoggingInterceptor(HttpLoggingInterceptor
             .Logger { message -> Log.d("Http info: ", message) })
@@ -58,5 +61,21 @@ object NetworkObj {
         }
 
         return fullNews
+    }
+
+    fun getCommentList(id: Int): List<Comment>? {
+        val request = Request.Builder().url(COMMENT_LIST_PREFIX + id).build()
+
+        val response = client.newCall(request).execute()
+
+        var newsList: List<Comment>? = null
+
+        response.body()?.let {
+            val html = it.string()
+            val doc = Parser.toDoc(html)
+            newsList = CommentListParser.parseDocForCommentList(doc)
+        }
+
+        return newsList
     }
 }

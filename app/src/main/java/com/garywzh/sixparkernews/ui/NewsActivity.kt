@@ -17,9 +17,10 @@ import com.garywzh.sixparkernews.network.NetworkObj
 import com.garywzh.sixparkernews.onImageClick
 import kotlinx.android.synthetic.main.activity_news.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.uiThread
 
-class NewsActivity : AppCompatActivity() {
+class NewsActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var news: News
     private var fullNews: FullNews? = null
@@ -32,6 +33,7 @@ class NewsActivity : AppCompatActivity() {
         Log.d("NewsActivity", news.toString())
 
         newsTitle.text = news.title
+        newsTitle.setOnClickListener(this)
         source.text = news.source
         date.text = news.date
 
@@ -87,7 +89,12 @@ class NewsActivity : AppCompatActivity() {
                 container.addView(view)
             }
             container.visibility = View.VISIBLE
+            container.setOnClickListener(this)
         }
+    }
+
+    override fun onClick(v: View?) {
+        startActivity<CommentsActivity>("id" to news.id)
     }
 
     override fun onBackPressed() {

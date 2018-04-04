@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SixParkerNews</string>
+    <string name="comments_activity_title">Comments</string>
 </resources>
