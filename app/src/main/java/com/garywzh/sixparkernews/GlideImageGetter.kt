@@ -1,5 +1,6 @@
 package com.garywzh.sixparkernews
 
+import android.app.Activity
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
@@ -16,7 +17,9 @@ class GlideImageGetter(private val textView: TextView) : Html.ImageGetter {
         val drawable = NetworkDrawable()
         val target = NetworkTarget(drawable, textView)
 
-        Glide.with(textView.context).asBitmap().load(source).into(target)
+        if (!(textView.context as Activity).isFinishing) {
+            Glide.with(textView.context as Activity).asBitmap().load(source).into(target)
+        }
 
         return drawable
     }
